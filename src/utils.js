@@ -111,7 +111,7 @@ function svgString2Image(svgString, width, height, format, callback) {
 }
 
 function generateHash(resultsArray) {
-  return '#' + window.storagePreifx + encodeURI(JSON.stringify(resultsArray));
+  return '#' + window.storagePreifx + '_' + encodeURI(JSON.stringify(resultsArray));
 }
 
 function hasHash() {
@@ -129,7 +129,16 @@ function drawFromHash() {
     return;
   }
 
-  window.results = decodeURI(hashScores[1]);
-  window.lastResults = window.results[0];
+  window.results = JSON.parse(decodeURI(hashScores[1]));
+  generateNewDimensions(window.results[0]);
   drawChart(results);
+}
+
+function generateNewDimensions(dimensions) {
+  var results = [];
+  for (var i = 0; i < dimensions.length; i++) {
+    results.push(dimensions[i].axis);
+  }
+
+  window.dimensionsArray = results;
 }
