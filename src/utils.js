@@ -116,22 +116,19 @@ function generateHash(resultsArray) {
 
 function hasHash() {
   var hashScores = window.location.hash.split('_');
-  if (hashScores[0] !== '#' + window.storagePreifx) {
-    return false;
+  if (hashScores[0] === '#' + window.storagePreifx || hashScores[0] === '#custom') {
+    return true;
   }
-
-  return true;
+  return false;
 }
 
 function drawFromHash() {
   var hashScores = window.location.hash.split('_');
-  if (hashScores[0] !== '#' + window.storagePreifx) {
-    return;
+  if (hashScores[0] === '#' + window.storagePreifx || hashScores[0] === '#custom') {
+    window.results = JSON.parse(decodeURI(hashScores[1]));
+    generateNewDimensions(window.results[0]);
+    drawChart(results);
   }
-
-  window.results = JSON.parse(decodeURI(hashScores[1]));
-  generateNewDimensions(window.results[0]);
-  drawChart(results);
 }
 
 function generateNewDimensions(dimensions) {
@@ -141,4 +138,5 @@ function generateNewDimensions(dimensions) {
   }
 
   window.dimensionsArray = results;
+  renderForm();
 }

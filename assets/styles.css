@@ -20,6 +20,13 @@
   left: 1000px;
 }
 
+#custom {
+  left: 1000px;
+  bottom: 100px;
+  display: block;
+  position: absolute;
+}
+
 #input-section section {
   width: 500px;
   clear: both;

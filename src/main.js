@@ -13,16 +13,8 @@ function drawFromLocalStorage() {
   }
 }
 
-function initForm() {
-  window.results = [];
-  window.lastResult = [];
-
-  if (hasHash()) {
-    drawFromHash()
-  } else {
-    drawFromLocalStorage();
-  }
-
+function renderForm() {
+  var dimensions = {};
   var sections = document.getElementById('sections');
   var sectionsHtml = "";
   for (var i = 0; i < window.dimensionsArray.length; i++) {
@@ -48,6 +40,19 @@ function initForm() {
 
   sections.innerHTML = sectionsHtml;
   window.dimensions = dimensions;
+}
+
+function initForm() {
+  window.results = [];
+  window.lastResult = [];
+
+  if (hasHash()) {
+    drawFromHash()
+  } else {
+    drawFromLocalStorage();
+  }
+
+  renderForm();
 }
 
 initForm();
@@ -91,4 +96,16 @@ function handleClick() {
 
   window.location.hash = generateHash(window.results);
   drawChart(window.results);
+}
+
+function handleCustom() {
+  event.preventDefault();
+  var value = document.getElementById('custom-dimension').value;
+  if (!value) {
+    return;
+  }
+  window.storagePreifx = 'custom';
+  window.dimensionsArray = value.split(',');
+  renderForm();
+  handleClick();
 }
