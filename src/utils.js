@@ -110,19 +110,8 @@ function svgString2Image(svgString, width, height, format, callback) {
   image.src = imgsrc;
 }
 
-var prefix = window.storagePreifx;
-
 function generateHash(resultsArray) {
-  var hash = prefix;
-  for (var i = 0; i < resultsArray.length; i++) {
-    var results = resultsArray[i];
-    hash = hash + '_';
-    for (var j = 0; j < results.length; j++) {
-      hash = hash + results[j].value
-    }
-  }
-
-  return hash;
+  return '#' + window.storagePreifx + encodeURI(JSON.stringify(resultsArray));
 }
 
 function hasHash() {
@@ -140,45 +129,7 @@ function drawFromHash() {
     return;
   }
 
-  hashScores.shift();
-  var scores = [];
-  for (var i = 0; i < hashScores.length; i++) {
-    if (hashScores[i].length === window.dimensionsArray.length) {
-      scores.push(hashScores[i]);
-    }
-  }
-  if (scores.length < 0) {
-    return;
-  }
-
-  var results = [];
-  var lastResult = {};
-  for (var i = 0; i < scores.length; i++) {
-    var dimensions = [];
-    for (var j = 0; j < window.dimensionsArray.length; j++) {
-      var dimension = window.dimensionsArray[j];
-      var id = dimension.toLocaleLowerCase()
-        .replace(/,/g, "")
-        .replace(/ /g, "-");
-      dimensions.push({
-        id: id,
-        value: scores[i][j],
-        axis: dimension
-      });
-
-      if (i === scores.length - 1) {
-        lastResult[id] = {
-          id: id,
-          value: scores[i][j],
-          axis: dimension
-        }
-      }
-    }
-
-    results.push(dimensions);
-  }
-
-  window.results = results;
-  window.lastResults = lastResult;
+  window.results = decodeURI(hashScores[1]);
+  window.lastResults = window.results[0];
   drawChart(results);
 }
