@@ -22,16 +22,15 @@
 <script src="assets/canvas-to-blob.min.js" type="application/javascript"></script>
 <script src="assets/d3.v3.min.js" type="application/javascript"></script>
 <script>
-  var originDimensions = [
-    "Influencing and persuading",
-    "Navigate organizational politics",
-    "Negotiation",
-    "Facilitation",
-    "Conflict management",
-    "Collaboration"
-  ];
-
   window.allDimensions = {
+    cm: [
+      "Influencing and persuading",
+      "Navigate organizational politics",
+      "Negotiation",
+      "Facilitation",
+      "Conflict management",
+      "Collaboration"
+    ],
     consulting: [
       "Influencing and persuading",
       "Navigate organizational politics",
@@ -47,8 +46,10 @@
     ]
   };
 
-  window.storagePreifx = 'cm';
-  window.dimensionsArray = originDimensions;
+  window.currentType = 'consulting';
+
+  window.storagePreifx = window.currentType;
+  window.dimensionsArray = window.allDimensions[window.currentType];
 </script>
 <script src="src/RadarChart.js" type="application/javascript"></script>
 <script src="src/utils.js" type="application/javascript"></script>

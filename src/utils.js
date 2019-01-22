@@ -143,7 +143,7 @@ function drawFromHash() {
   hashScores.shift();
   var scores = [];
   for (var i = 0; i < hashScores.length; i++) {
-    if (hashScores[i].length === originDimensions.length) {
+    if (hashScores[i].length === window.dimensionsArray.length) {
       scores.push(hashScores[i]);
     }
   }
@@ -155,8 +155,8 @@ function drawFromHash() {
   var lastResult = {};
   for (var i = 0; i < scores.length; i++) {
     var dimensions = [];
-    for (var j = 0; j < originDimensions.length; j++) {
-      var dimension = originDimensions[j];
+    for (var j = 0; j < window.dimensionsArray.length; j++) {
+      var dimension = window.dimensionsArray[j];
       var id = dimension.toLocaleLowerCase()
         .replace(/,/g, "")
         .replace(/ /g, "-");

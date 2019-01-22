@@ -25,8 +25,8 @@ function initForm() {
 
   var sections = document.getElementById('sections');
   var sectionsHtml = "";
-  for (var i = 0; i < originDimensions.length; i++) {
-    var dimension = originDimensions[i];
+  for (var i = 0; i < window.dimensionsArray.length; i++) {
+    var dimension = window.dimensionsArray[i];
     var id = dimension.toLocaleLowerCase()
       .replace(/,/g, "")
       .replace(/ /g, "-");
