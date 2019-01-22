@@ -282,16 +282,6 @@ function drawChart(data) {
     .attr("width", w + 400)
     .attr("height", h + 300);
 
- // Create the title for the legend
-  var text = svg.append("text")
-    .attr("class", "title")
-    .attr('transform', 'translate(90,0)')
-    .attr("x", 0)
-    .attr("y", h + 160)
-    .attr("font-size", "1.1em")
-    .attr("fill", "#404040")
-    .text("Tech Lead Assessment");
-
   // Initiate Legend
   var legend = svg.append("g")
     .attr("class", "legend")
@@ -328,29 +318,5 @@ function drawChart(data) {
     .text(function (d) {
       return d;
     });
-
-  // Architect
-  svg.append("text")
-    .attr("x", 90)
-    .attr("y", 60)
-    .attr("font-size", "1.5em")
-    .attr("fill", "#000")
-    .text("Architect");
-
-  // Leadership
-  svg.append("text")
-    .attr("x", w + 90)
-    .attr("y", 60)
-    .attr("font-size", "1.5em")
-    .attr("fill", "#000")
-    .text("Leadership");
-
-  // Developer
-  svg.append("text")
-    .attr("x", w + 90)
-    .attr("y", h + 120)
-    .attr("font-size", "1.5em")
-    .attr("fill", "#000")
-    .text("Developer");
 }
 

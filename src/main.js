@@ -1,8 +1,8 @@
 var dimensions = {};
 
 function drawFromLocalStorage() {
-  var savedItems = window.localStorage.getItem('tla');
-  var lastResults = window.localStorage.getItem('tla.last.results');
+  var savedItems = window.localStorage.getItem(window.storagePreifx);
+  var lastResults = window.localStorage.getItem(window.storagePreifx + '.last.results');
   if (savedItems) {
     var parsedItems = JSON.parse(savedItems);
     drawChart(parsedItems);
@@ -86,8 +86,8 @@ function handleClick() {
     window.results.push(results);
   }
 
-  localStorage.setItem('tla', JSON.stringify(window.results));
-  localStorage.setItem('tla.last.results', JSON.stringify(dimensions));
+  localStorage.setItem(window.storagePreifx, JSON.stringify(window.results));
+  localStorage.setItem(window.storagePreifx + '.last.results', JSON.stringify(dimensions));
 
   window.location.hash = generateHash(window.results);
   drawChart(window.results);

@@ -110,7 +110,7 @@ function svgString2Image(svgString, width, height, format, callback) {
   image.src = imgsrc;
 }
 
-var prefix = 'lta';
+var prefix = window.storagePreifx;
 
 function generateHash(resultsArray) {
   var hash = prefix;
@@ -127,7 +127,7 @@ function generateHash(resultsArray) {
 
 function hasHash() {
   var hashScores = window.location.hash.split('_');
-  if (hashScores[0] !== '#lta') {
+  if (hashScores[0] !== '#' + window.storagePreifx) {
     return false;
   }
 
@@ -136,7 +136,7 @@ function hasHash() {
 
 function drawFromHash() {
   var hashScores = window.location.hash.split('_');
-  if (hashScores[0] !== '#lta') {
+  if (hashScores[0] !== '#' + window.storagePreifx) {
     return;
   }
 
