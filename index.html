@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech Lead Assessments</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/mifa.css">
+</head>
+<body>
+<div id="body">
+  <div id="chart"></div>
+</div>
+
+<form id="input-section" onSubmit="return handleClick()">
+  <div id="sections"></div>
+  <input id="submit" name="Submit" type="submit" value="Submit">
+</form>
+
+<button id='saveButtonPng'>PNG</button>
+
+<script src="assets/FileSaver.min.js" type="application/javascript"></script>
+<script src="assets/canvas-to-blob.min.js" type="application/javascript"></script>
+<script src="assets/d3.v3.min.js" type="application/javascript"></script>
+<script>
+  var originDimensions = [
+    "Emotional Intelligence",
+    "Influencing",
+    "Actively develops others",
+    "Uses effective facilitation",
+    "Actively builds team",
+    "Active risk management",
+    "Open communication",
+    "Good coding skills",
+    "Experience in full stack",
+    "Pattern aware",
+    "Current knowledge of codebase",
+    "Continuous improvement",
+    "Clarity of problem",
+    "Business value focused",
+    "Communication bridge",
+    "Architectural vision",
+    "Focus on principles",
+    "Systems, not software",
+    "Champions Cross-Functional Requirements",
+    "Future thinking"
+  ];
+
+  window.dimensionsArray = originDimensions;
+</script>
+<script src="src/RadarChart.js" type="application/javascript"></script>
+<script src="src/utils.js" type="application/javascript"></script>
+<script src="src/main.js" type="application/javascript"></script>
+
+</body>
+</html>
